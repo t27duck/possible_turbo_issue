@@ -1,0 +1,4 @@
+<%= turbo_stream.update "form-area" do %>
+  <div>Special markup I'd like wrapped around the form in a frame</div>
+  <%= render 'form', post: @post %>
+<% end %>

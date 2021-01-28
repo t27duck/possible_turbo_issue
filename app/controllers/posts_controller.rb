@@ -26,9 +26,11 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: "Post was successfully created." }
+        format.turbo_stream { render :new }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :new } # DOING THIS RESULTS IN AN EXCEPTION
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
